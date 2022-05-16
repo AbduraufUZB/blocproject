@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rentalapp/core/constants/font_const.dart';
 import 'package:rentalapp/screens/home/cubit/home_cubit.dart';
 import 'package:rentalapp/screens/home/state/home_state.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:rentalapp/widgets/home_page_search_widgets.dart';
 
 class HomePage extends StatelessWidget {

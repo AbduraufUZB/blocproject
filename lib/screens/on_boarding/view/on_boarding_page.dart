@@ -11,17 +11,16 @@ class OnBoardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String valueE = "en";
     return BlocProvider(
       create: (context) => OnBoardingCubit(),
       child: BlocConsumer<OnBoardingCubit, OnBoardingState>(
         listener: (context, state) {},
-        builder: (context, state) => myScaffold(context, valueE),
+        builder: (context, state) => myScaffold(context),
       ),
     );
   }
 
-  Widget myScaffold(BuildContext context, String valueE) {
+  Widget myScaffold(BuildContext context) {
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -56,17 +55,16 @@ class OnBoardingPage extends StatelessWidget {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 const Text("Change language"),
-                DropdownButton<String>(
-                    value: valueE,
-                    dropdownColor: Colors.white,
-                    items: const [
-                      DropdownMenuItem(value: 'en', child: Text("English")),
-                      DropdownMenuItem(value: 'sp', child: Text("Spanish")),
-                    ],
-                    onChanged: (v) async{
-                      valueE = v!;
-                      await context.read<OnBoardingCubit>().language(v, context);
-                    }),
+                TextButton(onPressed: (){
+                  context.locale =
+                          const Locale("en", "US");
+                      context.read<OnBoardingCubit>().language("en", context);
+                }, child: const Text("English", style: TextStyle(color: Colors.white),)),
+                TextButton(onPressed: (){
+                  context.locale =
+                          const Locale("sp", "SP");
+                      context.read<OnBoardingCubit>().language("sp", context);
+                }, child: const Text("Spanish", style: TextStyle(color: Colors.white),)),
                 Expanded(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
