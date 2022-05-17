@@ -9,13 +9,4 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     valueE = v;
     emit(OnBoardingChangeLanguage());
   }
-  dynamic lang = 'en';
-  void languagew(v) {
-    if (v == 'uz') {
-      lang = 'uz';
-    } else if (v == 'en') {
-      lang = 'en';
-    }
-    emit(lang);
-  }
 }
